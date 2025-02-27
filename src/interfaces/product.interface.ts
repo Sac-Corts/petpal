@@ -4,16 +4,17 @@ export interface Product {
     images: string[];
     inStock: number;
     price: number;
-    sizes?: ValidSizes[];
+    sizes?: Size[];
     slug: string;
     tags: string[];
     title: string;
-    type: ValidTypes;
-    pet: 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic animals';
+    type: Type;
+    pets: Pet;
 }
 
-export type ValidSizes = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
-export type ValidTypes =
+export type Pet = 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic_animals';
+export type Size = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export type Type =
     | 'food'
     | 'snacks'
     | 'supplements'

@@ -1,22 +1,46 @@
-import { notFound } from "next/navigation";
+import { ProductGrid, Title } from "@/components";
+import { Pet } from "@/interfaces";
+import { initialData } from "@/seed/seed";
+
+const seedProducts = initialData.products;
 
 interface Props {
     params: {
-        id: string;
+        id: Pet;
     }
 }
 
 export default function CategoryPage({ params }: Props) {
 
     const { id } = params;
+    const products = seedProducts.filter(product => product.pets === id);
 
-    if (id === 'dogs') {
-        notFound();
+    const labels: Record<Pet, string> = {
+    'dogs': 'Perros',
+    'cats': 'Gatos',
+    'fishes': 'Peces',
+    'birds': 'Aves',
+    'rodents': 'Roedores',
+    'reptiles': 'Reptiles',
+    'amphibians': 'Anfibios',
+    'exotic-animals': 'Animales Exóticos', 
     }
-    
+
+    // if (id === 'dogs') {
+    //     notFound();
+    // }
+
     return (
-        <div>
-            <h1>Category Page { id }</h1>
-        </div>
+        <>
+            <Title
+                title={`Artículos de ${labels[id]}`}
+                subtitle="Todos los productos"
+                className="mb-2"
+            />
+
+            <ProductGrid
+                products={products}
+            />
+        </>
     );
 }

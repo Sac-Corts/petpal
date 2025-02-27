@@ -13,6 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  admin
+  user
+}
+
 enum Size {
   XXS
   XS
@@ -32,6 +37,16 @@ enum Pet {
   reptiles
   amphibians
   exotic_animals
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  role          Role      @default(user)
+  image         String?
 }
 
 model Category {

@@ -3,16 +3,24 @@ interface SeedProduct {
     images: string[];
     inStock: number;
     price: number;
-    sizes?: ValidSizes[];
+    sizes?: Size[];
     slug: string;
     tags: string[];
     title: string;
-    type: ValidTypes;
-    pet: 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic animals';
+    type: Type;
+    pets: Pet;
 }
 
-type ValidSizes = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
-type ValidTypes =
+interface SeedUser {
+    email: string;
+    password: string;
+    name: string;
+    role: 'admin' | 'user';
+}
+
+type Pet = 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic_animals';
+type Size = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+type Type =
     | 'food'
     | 'snacks'
     | 'supplements'
@@ -38,10 +46,38 @@ type ValidTypes =
     | 'filter';
 
 interface SeedData {
-    products: SeedProduct[],
+    users: SeedUser[];
+    categories: string[];
+    products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
+    users: [],
+    categories: [
+        'food',
+        'snacks',
+        'supplements',
+        'bed',
+        'cage',
+        'aquarium',
+        'hygiene',
+        'medicine',
+        'antiparasitic',
+        'toy',
+        'scratcher',
+        'exercise',
+        'collar',
+        'leash',
+        'carrier',
+        'travel',
+        'clothing',
+        'footwear',
+        'costume',
+        'accessory',
+        'habitat',
+        'lighting',
+        'filter'
+    ],
     products: [
 
         /* DOGS */
@@ -58,9 +94,8 @@ export const initialData: SeedData = {
             type: 'costume',
             tags: ['costumes'],
             title: "Disfraz Halloween De Perro, Mascota. Luigi De Mario Bros",
-            pet: 'dogs'
+            pets: 'dogs'
         },
-
 
         /* CATS */
 
@@ -85,7 +120,7 @@ export const initialData: SeedData = {
             type: 'food',
             tags: ['food'],
             title: "Alimento Para Ajolotes Adulto",
-            pet: 'amphibians'
+            pets: 'amphibians'
         },
 
         /* EXOTIC ANIMALS */
