@@ -26,11 +26,11 @@ export const PatientForm = () => {
                 </div>
 
                 <div className="mb-5">
-                    <label htmlFor="name" className="text-sm uppercase font-bold">
+                    <label htmlFor="age" className="text-sm uppercase font-bold">
                         Edad
                     </label>
                     <input
-                        id="name"
+                        id="age"
                         className="w-full p-3  border border-gray-100"
                         type="text"
                         placeholder="Edad de la mascota"
@@ -48,6 +48,28 @@ export const PatientForm = () => {
                     />
                 </div>
 
+                <div className="mb-5">
+                    <label htmlFor="image" className="text-sm uppercase font-bold">
+                        Imagen de la mascota
+                    </label>
+                    <input
+                        id="image"
+                        className="w-full p-3  border border-gray-100"
+                        type="file"
+                        accept="image/*"
+                    />
+                </div>
+
+                <div className="mb-5">
+                    <label htmlFor="description" className="text-sm uppercase font-bold">
+                        Descripción
+                    </label>
+                    <textarea
+                        id="description"
+                        className="w-full p-3 border border-gray-100"
+                        placeholder="Descripción de la mascota"
+                    />
+                </div>
 
                 <input
                     type="submit"

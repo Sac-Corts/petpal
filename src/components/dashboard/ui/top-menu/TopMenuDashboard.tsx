@@ -21,7 +21,8 @@ export const TopMenuDashboard = () => {
             {/* Center Menu */}
             <div className="hidden lg:block">
                 <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/dashboard/reminders">Recordatorios</Link>
-                <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/dashboard/history">Historial</Link>
+                <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/dashboard/profiles">Perfiles</Link>
+                <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/dashboard/history">Historial Médico</Link>
                 <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/">Tienda</Link>
             </div>
 
