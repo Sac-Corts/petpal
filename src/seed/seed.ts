@@ -3,24 +3,17 @@ interface SeedProduct {
     images: string[];
     inStock: number;
     price: number;
-    sizes?: Size[];
+    sizes: ValidSizes[];
     slug: string;
     tags: string[];
     title: string;
-    type: Type;
+    type: ValidTypes;
     pets: Pet;
 }
 
-interface SeedUser {
-    email: string;
-    password: string;
-    name: string;
-    role: 'admin' | 'user';
-}
-
 type Pet = 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic_animals';
-type Size = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
-type Type =
+type ValidSizes = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+type ValidTypes =
     | 'food'
     | 'snacks'
     | 'supplements'
@@ -46,13 +39,11 @@ type Type =
     | 'filter';
 
 interface SeedData {
-    users: SeedUser[];
     categories: string[];
     products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
-    users: [],
     categories: [
         'food',
         'snacks',
@@ -116,6 +107,7 @@ export const initialData: SeedData = {
             ],
             inStock: 10,
             price: 1299,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
             slug: "alimento-para-ajolotes-adulto",
             type: 'food',
             tags: ['food'],
