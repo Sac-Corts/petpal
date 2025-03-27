@@ -1,61 +1,78 @@
-import { notFound } from "next/navigation";
-import { SizeSelector } from "@/components";
-import { initialData } from "@/seed/seed";
-import { titleFont } from "@/config/fonts";
+import { notFound } from 'next/navigation';
+
+import { initialData } from '@/seed/seed';
+import { titleFont } from '@/config/fonts';
+import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from '@/components';
 
 interface Props {
     params: {
         slug: string;
-    }
+    };
 }
 
-export default function ProductPage({ params }: Props) {
-    const { slug } = params;
+export default async function ProductPage({ params }: Props) {
+
+    const { slug } = await params;
     const product = initialData.products.find(product => product.slug === slug);
 
     if (!product) {
         notFound();
     }
 
-    const availableSizes = product.sizes || [];
-
     return (
         <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
 
             {/* Slideshow */}
-            <div className="col-span-1 md:col-span-2">
-                hola
+            <div className="col-span-1 md:col-span-2 ">
+
+                {/* Mobile Slideshow */}
+                <ProductMobileSlideshow
+                    title={product.title}
+                    images={product.images}
+                    className="block md:hidden"
+                />
+
+                {/* Desktop Slideshow */}
+                <ProductSlideshow
+                    title={product.title}
+                    images={product.images}
+                    className="hidden md:block"
+                />
+
             </div>
 
-            {/* Details */}
+            {/* Detalles */}
             <div className="col-span-1 px-5">
-                <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
+
+                <h1 className={` ${titleFont.className} antialiased font-bold text-xl`}>
                     {product.title}
                 </h1>
                 <p className="text-lg mb-5">${product.price}</p>
-            </div>
 
-            {/* Size Selector */}
-            {availableSizes.length > 0 && (
-                <SizeSelector 
-                    selectedSize={availableSizes[0]}
-                    availableSizes={availableSizes}
+                {/* Selector de Tallas */}
+                <SizeSelector
+                    selectedSize={product.sizes[2]}
+                    availableSizes={product.sizes}
                 />
-            )}
 
-            {/* Quantity Selector */}
 
-            {/* Button */}
-            <button className="btn-primary my-5">
-                Agregar al carrito
-            </button>
+                {/* Selector de Cantidad */}
+                <QuantitySelector
+                    quantity={1}
+                />
 
-            {/* Description */}
-            <h3 className="font-bold text-sm">Descripción</h3>
-            <p className="font-light">
-                {product.description}
-            </p>
+                {/* Button */}
+                <button className="btn-primary my-5">
+                    Agregar al carrito
+                </button>
 
+                {/* Descripción */}
+                <h3 className="font-bold text-sm">Descripción</h3>
+                <p className="font-light">
+                    {product.description}
+                </p>
+
+            </div>
 
         </div>
     );
