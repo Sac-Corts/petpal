@@ -3,21 +3,24 @@ interface SeedProduct {
     images: string[];
     inStock: number;
     price: number;
-<<<<<<< HEAD
-    sizes: ValidSizes[];
-=======
     sizes: Size[];
->>>>>>> sprint-4
     slug: string;
     tags: string[];
     title: string;
-    type: ValidTypes;
+    type: Type;
     pets: Pet;
 }
 
+interface SeedUser {
+    email: string;
+    password: string;
+    name: string;
+    role: 'admin' | 'user';
+}
+
 type Pet = 'dogs' | 'cats' | 'fishes' | 'birds' | 'rodents' | 'reptiles' | 'amphibians' | 'exotic_animals';
-type ValidSizes = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
-type ValidTypes =
+type Size = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+type Type =
     | 'food'
     | 'snacks'
     | 'supplements'
@@ -43,11 +46,13 @@ type ValidTypes =
     | 'filter';
 
 interface SeedData {
+    users: SeedUser[];
     categories: string[];
     products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
+    users: [],
     categories: [
         'food',
         'snacks',
