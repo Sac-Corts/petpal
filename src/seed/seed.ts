@@ -3,7 +3,11 @@ interface SeedProduct {
     images: string[];
     inStock: number;
     price: number;
+<<<<<<< HEAD
     sizes: ValidSizes[];
+=======
+    sizes: Size[];
+>>>>>>> sprint-4
     slug: string;
     tags: string[];
     title: string;
@@ -89,14 +93,89 @@ export const initialData: SeedData = {
         },
 
         /* CATS */
-
+        {
+            description: "Perfecta para Halloween y cosplay, esta ropa de cosplay de Halloween para mascotas es perfecta para varias ocasiones, como fiestas de mascotas, Halloween, Navidad, Pascua, Acción de Gracias, accesorios de fotografía, fiestas de máscaras, fiestas temáticas de cumpleaños, etc. Añade un toque único y divertido a cualquier disfraz o atuendo.",
+            images: [
+                '/products/cats_1.jpg',
+                '/products/cats_1.2.jpg',
+            ],
+            inStock: 10,
+            price: 284,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+            slug: "disfraz-de-capa-para-mascotas-de-halloween-capa-de-vampiro",
+            type: 'costume',
+            tags: ['costumes'],
+            title: "Disfraz de capa para mascotas de Halloween, capa de vampiro para gatos",
+            pets: 'cats'
+        },
+        
         /* FISHES */
+        {
+            description: "Dedicado a la excelencia en nutrición para los peces tropicales.",
+            images: [
+                '/products/fishes_1.jpg',
+                '/products/fishes_1.2.jpg',
+            ],
+            inStock: 10,
+            price: 593,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+            slug: "hojuelas-basicas-lomas-1-kg",
+            type: 'food',
+            tags: ['food'],
+            title: "HOJUELAS BASICAS LOMAS 1 KG",
+            pets: 'fishes'
+        },
 
         /* BIRDS */
+        {
+            description: "Alimento para aves silvestres y migratorias. Ideal para alimentar aves silvestres y de hogar.",
+            images: [
+                '/products/birds_1.jpg',
+                '/products/birds_1.2.jpg',
+            ],
+            inStock: 10,
+            price: 52,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+            slug: "mezcla-p-aves-silvestres-y-de-hogar-900-g",
+            type: 'food',
+            tags: ['food'],
+            title: "MEZCLA P/AVES SILVESTRES Y DE HOGAR 900 G",
+            pets: 'birds'
+        },
 
         /* RODENTS */
+        {
+            description: "La Mezcla de semillas para hámster de Redkite es un alimento delicioso, elaborado con una variedad de ingredientes naturales mezclados y balanceados perfectamente",
+            images: [
+                '/products/rodents_1.jpg',
+                '/products/rodents_1.2.jpg',
+            ],
+            inStock: 10,
+            price: 115,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+            slug: "mezcla-de-semillas-p-hamster-1-kg",
+            type: 'food',
+            tags: ['food'],
+            title: "MEZCLA DE SEMILLAS P/HAMSTER 1 KG",
+            pets: 'rodents'
+        },
 
         /* REPTILES */
+        {
+            description: "",
+            images: [
+                '/products/reptiles_1.jpg',
+                '/products/reptiles_1.2.jpg',
+            ],
+            inStock: 10,
+            price: 781,
+            sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+            slug: "tetra-reptomin-floating-sticks-alimento-para-tortugas-y-anfibios-con-1-2-kilogramos",
+            type: 'food',
+            tags: ['food'],
+            title: "Tetra Reptomin Floating Sticks Alimento para Tortugas y Anfibios con 1.2 Kilogramos",
+            pets: 'reptiles'
+        },
 
         /* AMPHIBIANS */
         {
@@ -116,5 +195,6 @@ export const initialData: SeedData = {
         },
 
         /* EXOTIC ANIMALS */
+
     ]
 }

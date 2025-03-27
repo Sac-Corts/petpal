@@ -4,7 +4,11 @@ export interface Product {
     images: string[];
     inStock: number;
     price: number;
+<<<<<<< HEAD
     sizes: ValidSizes[];
+=======
+    sizes: Size[];
+>>>>>>> sprint-4
     slug: string;
     tags: string[];
     title: string;

@@ -3,7 +3,11 @@
 import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+<<<<<<< HEAD
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
+=======
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
+>>>>>>> sprint-4
 
 
 import 'swiper/css';
@@ -13,7 +17,10 @@ import 'swiper/css/pagination';
 import './slideshow.css';
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sprint-4
 interface Props {
     images: string[];
     title: string;
@@ -21,7 +28,10 @@ interface Props {
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sprint-4
 export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
 
 
@@ -47,7 +57,11 @@ export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
                             <Image
                                 width={600}
                                 height={500}
+<<<<<<< HEAD
                                 src={`/products/${image}`}
+=======
+                                src={image}
+>>>>>>> sprint-4
                                 alt={title}
                                 className="object-fill"
                             />
@@ -57,8 +71,11 @@ export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
                 }
             </Swiper>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> sprint-4
         </div>
     );
 };

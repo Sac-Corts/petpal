@@ -7,6 +7,11 @@ interface Props {
     quantity: number;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> sprint-4
 export const QuantitySelector = ({ quantity }: Props) => {
 
     const [count, setCount] = useState(quantity);
