@@ -1,41 +1,69 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useActionState } from "react";
-
+import { useRouter } from "next/navigation";
 import { authenticate } from "@/actions";
 import { IoInformationOutline } from "react-icons/io5";
-import clsx from 'clsx';
-// import { useRouter } from 'next/navigation';
+import clsx from "clsx";
 
 export const LoginForm = () => {
+    const router = useRouter();
+    const [state, setState] = useState(""); // Replace useActionState
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-    // const router = useRouter();
-    const [state, dispatch] = useActionState(authenticate, undefined);
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setState("Pending");
+        setError("");
+
+        try {
+            const formData = new FormData();
+            formData.append("email", email);
+            formData.append("password", password);
+            const result = await authenticate(state, formData);
+            if (result === "Success") {
+                setState("Success");
+            } else if (result === "CredentialsSignin") {
+                setState("CredentialsSignin");
+                setError("Credenciales no son correctas");
+            }
+        } catch (err) {
+            setState("Error");
+            setError("Ocurrió un error inesperado. Inténtalo de nuevo.");
+        }
+    };
 
     useEffect(() => {
-        if (state === 'Success') {
-            // redireccionar
-            // router.replace('/');
-            window.location.replace('/');
+        if (state === "Success") {
+            router.replace("/");
         }
-    }, [state]);
+    }, [state, router]);
 
     return (
-        <form action={dispatch} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col">
             <label htmlFor="email">Correo electrónico</label>
             <input
+                id="email"
                 className="px-5 py-2 border bg-gray-200 rounded mb-5"
                 type="email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
             />
 
             <label htmlFor="password">Contraseña</label>
             <input
+                id="password"
                 className="px-5 py-2 border bg-gray-200 rounded mb-5"
                 type="password"
                 name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
             />
 
             <div
@@ -43,22 +71,17 @@ export const LoginForm = () => {
                 aria-live="polite"
                 aria-atomic="true"
             >
-                {state === "CredentialsSignin" && (
+                {error && (
                     <div className="flex flex-row mb-2">
                         <IoInformationOutline className="h-5 w-5 text-red-500" />
-                        <p className="text-sm text-red-500">
-                            Credenciales no son correctas
-                        </p>
+                        <p className="text-sm text-red-500">{error}</p>
                     </div>
                 )}
             </div>
 
-            <LoginButton pending={state === 'Pending'} />
-            {/* <button type="submit" className="btn-primary">
-        Ingresar
-      </button> */}
+            <LoginButton pending={state === "Pending"} />
 
-            {/* divisor l ine */}
+            {/* Divisor */}
             <div className="flex items-center my-5">
                 <div className="flex-1 border-t border-gray-500"></div>
                 <div className="px-2 text-gray-800">O</div>
@@ -72,13 +95,13 @@ export const LoginForm = () => {
     );
 };
 
-function LoginButton({ pending }) {
+function LoginButton({ pending }: { pending: boolean }) {
     return (
         <button
             type="submit"
             className={clsx({
                 "btn-primary": !pending,
-                "btn-disabled": pending
+                "btn-disabled": pending,
             })}
             disabled={pending}
         >

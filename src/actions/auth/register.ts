@@ -35,7 +35,7 @@ export const registerUser = async (name: string, email: string, password: string
 
         return {
             ok: false,
-            message: error.message || 'No se pudo crear el usuario'
+            message: error instanceof Error ? error.message : 'No se pudo crear el usuario'
         };
     }
 };

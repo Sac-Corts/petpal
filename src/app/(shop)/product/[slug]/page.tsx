@@ -1,79 +1,83 @@
-import { notFound } from 'next/navigation';
-
-import { initialData } from '@/seed/seed';
-import { titleFont } from '@/config/fonts';
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from '@/components';
-
-interface Props {
-    params: {
-        slug: string;
-    };
+export default function Placeholder() {
+    return <div>Placeholder for Category Page</div>;
 }
 
-export default async function ProductPage({ params }: Props) {
+// import { notFound } from 'next/navigation';
 
-    const { slug } = await params;
-    const product = initialData.products.find(product => product.slug === slug);
+// import { initialData } from '@/seed/seed';
+// import { titleFont } from '@/config/fonts';
+// import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from '@/components';
 
-    if (!product) {
-        notFound();
-    }
+// interface Props {
+//     params: {
+//         slug: string;
+//     };
+// }
 
-    return (
-        <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
+// export default async function ProductPage({ params }: Props) {
 
-            {/* Slideshow */}
-            <div className="col-span-1 md:col-span-2 ">
+//     const { slug } = params;
+//     const product = initialData.products.find(product => product.slug === slug);
 
-                {/* Mobile Slideshow */}
-                <ProductMobileSlideshow
-                    title={product.title}
-                    images={product.images}
-                    className="block md:hidden"
-                />
+//     if (!product) {
+//         notFound();
+//     }
 
-                {/* Desktop Slideshow */}
-                <ProductSlideshow
-                    title={product.title}
-                    images={product.images}
-                    className="hidden md:block"
-                />
+//     return (
+//         <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
 
-            </div>
+//             {/* Slideshow */}
+//             <div className="col-span-1 md:col-span-2 ">
 
-            {/* Detalles */}
-            <div className="col-span-1 px-5">
+//                 {/* Mobile Slideshow */}
+//                 <ProductMobileSlideshow
+//                     title={product.title}
+//                     images={product.images}
+//                     className="block md:hidden"
+//                 />
 
-                <h1 className={` ${titleFont.className} antialiased font-bold text-xl`}>
-                    {product.title}
-                </h1>
-                <p className="text-lg mb-5">${product.price}</p>
+//                 {/* Desktop Slideshow */}
+//                 <ProductSlideshow
+//                     title={product.title}
+//                     images={product.images}
+//                     className="hidden md:block"
+//                 />
 
-                {/* Selector de Tallas */}
-                <SizeSelector
-                    selectedSize={product.sizes[2]}
-                    availableSizes={product.sizes}
-                />
+//             </div>
+
+//             {/* Detalles */}
+//             <div className="col-span-1 px-5">
+
+//                 <h1 className={` ${titleFont.className} antialiased font-bold text-xl`}>
+//                     {product.title}
+//                 </h1>
+//                 <p className="text-lg mb-5">${product.price}</p>
+
+//                 {/* Selector de Tallas */}
+//                 <SizeSelector
+//                     selectedSize={product.sizes[2]}
+//                     availableSizes={product.sizes}
+//                 />
 
 
-                {/* Selector de Cantidad */}
-                <QuantitySelector
-                    quantity={1}
-                />
+//                 {/* Selector de Cantidad */}
+//                 <QuantitySelector
+//                     quantity={1}
+//                 />
 
-                {/* Button */}
-                <button className="btn-primary my-5">
-                    Agregar al carrito
-                </button>
+//                 {/* Button */}
+//                 <button className="btn-primary my-5">
+//                     Agregar al carrito
+//                 </button>
 
-                {/* Descripción */}
-                <h3 className="font-bold text-sm">Descripción</h3>
-                <p className="font-light">
-                    {product.description}
-                </p>
+//                 {/* Descripción */}
+//                 <h3 className="font-bold text-sm">Descripción</h3>
+//                 <p className="font-light">
+//                     {product.description}
+//                 </p>
 
-            </div>
+//             </div>
 
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
